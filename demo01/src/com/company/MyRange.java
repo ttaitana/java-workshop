@@ -22,17 +22,9 @@ public class MyRange {
         char leftController = input.charAt(0);
         char rightController = input.charAt(arrayLength - 1);
         String[] numberRange = input.replaceAll("[\\[ \\]()]", "").split("[,]");
-        if('[' == (leftController)){
-            leftIndicator = 0;
-        }else{
-            leftIndicator = 1;
-        }
+        leftIndicator = '[' == (leftController) ? 0 : 1;
 
-        if(']' == (rightController)){
-            rightIndicator = 1;
-        }else{
-            rightIndicator = 0;
-        }
+        rightIndicator = ']' == (rightController) ? 1 : 0;
 
         this.start = Integer.parseInt(numberRange[0]) + leftIndicator;
         this.end = Integer.parseInt(numberRange[1]) + rightIndicator;
