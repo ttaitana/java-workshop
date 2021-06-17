@@ -1,14 +1,20 @@
 package com.company;
 
 public class Employee {
-    //attributes
     private int id;
     private String firstName;
     private String lastName;
 //    private Department department;
     private String positionName;
 
-    //methods
+    public Employee(){
+        this.firstName = "Employee";
+        this.lastName = "Default";
+    }
+    public Employee(String firstName, String lastName){
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public String getFullName(){
         return this.firstName + ' ' + this.lastName;
