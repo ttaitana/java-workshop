@@ -18,4 +18,16 @@ class MySortTest {
         List<Integer> result = test.ascendingSort();
         assertEquals(expectedValue, result);
     }
+
+    @Test
+    @DisplayName("Sorting with 1 value list")
+    public void oneValueSort(){
+        List<Integer> expectedValue = new ArrayList<>();
+        expectedValue.add(1);
+        List<Integer> input = new ArrayList<>();
+        input.add(1);
+        MySort test = new MySort((ArrayList<Integer>) input);
+        List<Integer> result = test.ascendingSort();
+        assertEquals(expectedValue, result);
+    }
 }
