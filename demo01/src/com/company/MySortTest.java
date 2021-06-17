@@ -61,7 +61,7 @@ class MySortTest {
 
     @Test
     @DisplayName("Sorting with 3 sorted value list")
-    public void threeUnsortedValue(){
+    public void threeSortedValue(){
         List<Integer> expectedValue = new ArrayList<>();
         expectedValue.add(1);
         expectedValue.add(2);
@@ -69,6 +69,22 @@ class MySortTest {
         List<Integer> input = new ArrayList<>();
         input.add(1);
         input.add(2);
+        input.add(3);
+        MySort test = new MySort((ArrayList<Integer>) input);
+        List<Integer> result = test.ascendingSort();
+        assertEquals(expectedValue, result);
+    }
+
+    @Test
+    @DisplayName("Sorting with 3 unsorted value list")
+    public void threeUnsortedValue(){
+        List<Integer> expectedValue = new ArrayList<>();
+        expectedValue.add(1);
+        expectedValue.add(2);
+        expectedValue.add(3);
+        List<Integer> input = new ArrayList<>();
+        input.add(2);
+        input.add(1);
         input.add(3);
         MySort test = new MySort((ArrayList<Integer>) input);
         List<Integer> result = test.ascendingSort();
