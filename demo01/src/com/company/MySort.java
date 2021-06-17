@@ -11,6 +11,17 @@ public class MySort {
     }
 
     public ArrayList<Integer> ascendingSort(){
-        return (ArrayList<Integer>) this.collection;
+
+        if(this.collection.size() < 2){
+            return (ArrayList<Integer>) this.collection;
+        }
+        if(this.collection.get(0) < this.collection.get(1)){
+            return (ArrayList<Integer>) this.collection;
+        }else {
+            List<Integer> sortedList = new ArrayList<>();
+            sortedList.add(this.collection.get(1));
+            sortedList.add(this.collection.get(0));
+            return (ArrayList<Integer>) sortedList;
+        }
     }
 }

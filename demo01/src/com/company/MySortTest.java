@@ -44,4 +44,18 @@ class MySortTest {
         List<Integer> result = test.ascendingSort();
         assertEquals(expectedValue, result);
     }
+
+    @Test
+    @DisplayName("Sorting with 2 unsorted value list")
+    public void twoUnsortedValue(){
+        List<Integer> expectedValue = new ArrayList<>();
+        expectedValue.add(1);
+        expectedValue.add(2);
+        List<Integer> input = new ArrayList<>();
+        input.add(2);
+        input.add(1);
+        MySort test = new MySort((ArrayList<Integer>) input);
+        List<Integer> result = test.ascendingSort();
+        assertEquals(expectedValue, result);
+    }
 }
