@@ -8,8 +8,7 @@ public class Employee {
     private String positionName;
 
     public Employee(){
-        this.firstName = "Employee";
-        this.lastName = "Default";
+        this("", "");
     }
     public Employee(String firstName, String lastName){
         this.firstName = firstName;
@@ -22,6 +21,10 @@ public class Employee {
 
     public String getPositionName(){
         return "return user's position";
+    }
+
+    public int getId() {
+        return id;
     }
 }
 ;
