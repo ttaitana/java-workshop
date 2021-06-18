@@ -5,8 +5,8 @@ import java.util.Random;
 public class GenerateUUID {
     UUIDRandom random = new UUIDRandom();
     public String getUUID(String name){
-        int randomNumber = random.nextInt(10);
-        random.setCurrentNumber(randomNumber);
+        int randomNumber = this.random.nextInt(10);
+        this.random.setCurrentNumber(randomNumber);
         String id = "XYZ" + name + randomNumber;
         return id;
     }
