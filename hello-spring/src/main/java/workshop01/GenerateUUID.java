@@ -18,10 +18,6 @@ public class GenerateUUID {
 
 class UUIDRandom extends Random{
     private int currentNumber;
-    public int randomNumber() {
-        int randomNumber = this.nextInt(10);
-        return randomNumber;
-    }
 
     public int getCurrentNumber() {
         return currentNumber;
