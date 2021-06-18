@@ -9,6 +9,7 @@ class GenerateUUIDTest {
     public void getUUID(){
         GenerateUUID generateUUID = new GenerateUUID();
         String uuid = generateUUID.getUUID("Taitana");
-        assertEquals("XYZTaitana6", uuid);
+        String expectedValue = "XYZTaitana" + generateUUID.getUUIDNumber();
+        assertEquals(expectedValue, uuid);
     }
 }
