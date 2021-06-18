@@ -57,7 +57,7 @@ class FizzBuzzTest {
     public void fizzBuzz7() {
         FizzBuzz fb = new FizzBuzz();
         String result = fb.printFizzBuzz(7);
-        String expectedValue = "7";
+        String expectedValue = "KBTG BASIC JAVA";
         assertEquals(expectedValue, result);
     }
 

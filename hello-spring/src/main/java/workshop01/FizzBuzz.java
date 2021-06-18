@@ -20,6 +20,7 @@ public class FizzBuzz {
     public String fizzBuzzChecker(){
         if(this.isDividedBy(15)) return "FizzBuzz";
         if(this.isDividedBy(5)) return "Buzz";
+        if(this.isDividedBy(7)) return "KBTG BASIC JAVA";
         if(this.isDividedBy(3)) return "Fizz";
         return Integer.toString(this.getNumber());
     }
