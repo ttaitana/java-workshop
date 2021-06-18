@@ -85,4 +85,36 @@ class FizzBuzzTest {
         assertEquals(expectedValue, result);
     }
 
+    @Test
+    public void fizzBuzz11() {
+        FizzBuzz fb = new FizzBuzz();
+        String result = fb.printFizzBuzz(11);
+        String expectedValue = "11";
+        assertEquals(expectedValue, result);
+    }
+
+    @Test
+    public void fizzBuzz12() {
+        FizzBuzz fb = new FizzBuzz();
+        String result = fb.printFizzBuzz(12);
+        String expectedValue = "Fizz";
+        assertEquals(expectedValue, result);
+    }
+
+    @Test
+    public void fizzBuzz15() {
+        FizzBuzz fb = new FizzBuzz();
+        String result = fb.printFizzBuzz(15);
+        String expectedValue = "FizzBuzz";
+        assertEquals(expectedValue, result);
+    }
+
+    @Test
+    public void fizzBuzz30() {
+        FizzBuzz fb = new FizzBuzz();
+        String result = fb.printFizzBuzz(30);
+        String expectedValue = "FizzBuzz";
+        assertEquals(expectedValue, result);
+    }
+
 }
