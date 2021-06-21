@@ -13,16 +13,20 @@ public class TennisGame3 {
     }
 
     public String getScore() {
-        if (player1Score < 4 && player2Score < 4 && !(player1Score + player2Score == 6)) {
+        if (isNormalGame()) {
             String[] point = new String[]{"Love", "Fifteen", "Thirty", "Forty"};
             String displayScore = point[player1Score];
             return (player1Score == player2Score) ? displayScore + "-All" : displayScore + "-" + point[player2Score];
-        } else {
-            if (player1Score == player2Score)
-                return "Deuce";
-            String advantagePlayer = player1Score > player2Score ? player1Name : player2Name;
-            return ((player1Score - player2Score) * (player1Score - player2Score) == 1) ? "Advantage " + advantagePlayer : "Win for " + advantagePlayer;
         }
+        if (player1Score == player2Score)
+            return "Deuce";
+        String advantagePlayer = player1Score > player2Score ? player1Name : player2Name;
+        return (Math.abs(player1Score - player2Score) == 1) ? "Advantage " + advantagePlayer : "Win for " + advantagePlayer;
+
+    }
+
+    private boolean isNormalGame() {
+        return player1Score < 4 && player2Score < 4 && player1Score + player2Score != 6;
     }
 
     public void wonPoint(String playerName) {
