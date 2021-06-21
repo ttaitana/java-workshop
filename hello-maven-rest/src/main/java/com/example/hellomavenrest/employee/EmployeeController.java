@@ -1,10 +1,7 @@
 package com.example.hellomavenrest.employee;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.Random;
 
@@ -36,5 +33,10 @@ public class EmployeeController {
             System.out.println("Invalid type of id");
         }
         return new EmployeeResponse(_id, "Taitana", "Yumee");
+    }
+
+    @PostMapping("/employee")
+    public EmployeeResponse createEmployee(@RequestBody EmployeeRequest req){
+        return new EmployeeResponse(1, req.getFname(), req.getLname());
     }
 }
