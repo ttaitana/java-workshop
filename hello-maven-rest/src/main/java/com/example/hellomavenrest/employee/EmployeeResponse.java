@@ -5,6 +5,11 @@ public class EmployeeResponse {
     private String lname;
     private int id;
 
+    @Override
+    public String toString() {
+        return String.format("id: %d, %s %s", this.getId(), this.getFname(), this.getLname());
+    }
+
     public EmployeeResponse() {
     }
 

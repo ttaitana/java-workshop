@@ -18,10 +18,21 @@ class EmployeeControllerTest {
         assertEquals("Yumee", response.getLname());
     }
 
+    @Test
     public void callAPIWithQueryVariable(@Autowired TestRestTemplate restTemplate){
         EmployeeResponse response = restTemplate.getForObject("/employee?id=12", EmployeeResponse.class);
         assertEquals(12, response.getId());
         assertEquals("Taitana", response.getFname());
         assertEquals("Yumee", response.getLname());
+    }
+
+    @Test
+    public void callAPIWithPathVariableCompareWithObject(@Autowired TestRestTemplate restTemplate){
+        EmployeeResponse expect = new EmployeeResponse(123, "Taitana", "Yumee");
+        EmployeeResponse response = restTemplate.getForObject("/employee/123", EmployeeResponse.class);
+        assertEquals(123, response.getId());
+        assertEquals("Taitana", response.getFname());
+        assertEquals("Yumee", response.getLname());
+        assertEquals(expect, response);
     }
 }
