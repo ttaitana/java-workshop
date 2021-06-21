@@ -11,32 +11,34 @@ public class EmployeeController {
     private NumberRandom random;
 
     @GetMapping("/employee/{id}")
-    public EmployeeResponse getEmployeeById(@PathVariable String id){
+    public EmployeeResponse getEmployeeById(@PathVariable String id) {
         int _id = 0;
-        try{
+        try {
             _id = Integer.parseInt(id);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Invalid type of id");
         }
 
 //      Todo: Workshop
         int number = this.random.nextInt(10);
-        return new EmployeeResponse(_id, "Taitana"+number, "Yumee");
+        return new EmployeeResponse(_id, "Taitana" + number, "Yumee");
     }
 
     @GetMapping("/employee")
-    public EmployeeResponse getEmployeeByParams(@RequestParam String id){
+    public EmployeeResponse getEmployeeByParams(@RequestParam String id) {
         int _id = 0;
-        try{
+        try {
             _id = Integer.parseInt(id);
-        }catch (Exception e){
+        } catch (Exception e) {
             System.out.println("Invalid type of id");
         }
         return new EmployeeResponse(_id, "Taitana", "Yumee");
     }
 
     @PostMapping("/employee")
-    public EmployeeResponse createEmployee(@RequestBody EmployeeRequest req){
-        return new EmployeeResponse(1, req.getFname(), req.getLname());
+    public EmployeeResponse createEmployee(@RequestBody EmployeeRequest req) {
+        int id = this.random.nextInt(10);
+
+        return new EmployeeResponse(id, req.getFname(), req.getLname());
     }
 }

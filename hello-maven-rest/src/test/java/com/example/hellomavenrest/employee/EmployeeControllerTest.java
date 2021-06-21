@@ -16,6 +16,8 @@ class EmployeeControllerTest {
     @MockBean
     NumberRandom random;
 
+    @Autowired TestRestTemplate restTemplate;
+
 //    @Test
 //    public void callAPIWithPathVariable(@Autowired TestRestTemplate restTemplate){
 //        EmployeeResponse response = restTemplate.getForObject("/employee/123", EmployeeResponse.class);
@@ -25,7 +27,7 @@ class EmployeeControllerTest {
 //    }
 
     @Test
-    public void callAPIWithQueryVariable(@Autowired TestRestTemplate restTemplate){
+    public void callAPIWithQueryVariable(){
         EmployeeResponse response = restTemplate.getForObject("/employee?id=12", EmployeeResponse.class);
         assertEquals(12, response.getId());
         assertEquals("Taitana", response.getFname());
@@ -33,7 +35,7 @@ class EmployeeControllerTest {
     }
 
     @Test
-    public void callAPIWithPathVariableCompareWithObject(@Autowired TestRestTemplate restTemplate){
+    public void callAPIWithPathVariableCompareWithObject(){
 //      ? Mocking
         when(random.nextInt(anyInt())).thenReturn(5);
 
@@ -42,6 +44,15 @@ class EmployeeControllerTest {
         assertEquals(123, response.getId());
         assertEquals("Taitana5", response.getFname());
         assertEquals("Yumee", response.getLname());
+        assertEquals(expect, response);
+    }
+
+    @Test
+    public void callCreateEmployeeApi(){
+        when(random.nextInt(anyInt())).thenReturn(1);
+        EmployeeResponse expect = new EmployeeResponse(1, "Taitana", "Yumee");
+        EmployeeRequest req = new EmployeeRequest("Taitana", "Yumee");
+        EmployeeResponse response = restTemplate.postForObject("/employee", req,  EmployeeResponse.class);
         assertEquals(expect, response);
     }
 }
