@@ -13,10 +13,6 @@ public class EmployeeController {
     @Autowired
     private NumberRandom random;
 
-    public void setRandom(NumberRandom random) {
-        this.random = random;
-    }
-
     @GetMapping("/employee/{id}")
     public EmployeeResponse getEmployeeById(@PathVariable String id){
         int _id = 0;
