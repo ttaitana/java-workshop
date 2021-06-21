@@ -4,12 +4,18 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.SpringBootTest.*;
+import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 
 import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.ArgumentMatchers.anyInt;
+import static org.mockito.Mockito.when;
 
 @SpringBootTest(webEnvironment = WebEnvironment.RANDOM_PORT)
 class EmployeeControllerTest {
+    @MockBean
+    NumberRandom random;
+
 //    @Test
 //    public void callAPIWithPathVariable(@Autowired TestRestTemplate restTemplate){
 //        EmployeeResponse response = restTemplate.getForObject("/employee/123", EmployeeResponse.class);
@@ -28,8 +34,11 @@ class EmployeeControllerTest {
 
     @Test
     public void callAPIWithPathVariableCompareWithObject(@Autowired TestRestTemplate restTemplate){
-        EmployeeResponse expect = new EmployeeResponse(123, "Taitana5", "Yumee");
+//      ? Mocking
+        when(random.nextInt(anyInt())).thenReturn(5);
+
         EmployeeResponse response = restTemplate.getForObject("/employee/123", EmployeeResponse.class);
+        EmployeeResponse expect = new EmployeeResponse(123, "Taitana5", "Yumee");
         assertEquals(123, response.getId());
         assertEquals("Taitana5", response.getFname());
         assertEquals("Yumee", response.getLname());
