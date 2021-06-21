@@ -22,7 +22,6 @@ public class TennisGame3 {
             return "Deuce";
         String advantagePlayer = player1Score > player2Score ? player1Name : player2Name;
         return (Math.abs(player1Score - player2Score) == 1) ? "Advantage " + advantagePlayer : "Win for " + advantagePlayer;
-
     }
 
     private boolean isNormalGame() {
@@ -34,7 +33,6 @@ public class TennisGame3 {
             this.player1Score += 1;
         else
             this.player2Score += 1;
-
     }
 
 }
