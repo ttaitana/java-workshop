@@ -13,6 +13,8 @@ public class EmployeeController {
     @Autowired
     private EmployeeRepository employeeRepository;
 
+    @Autowired private EmployeeService employeeService;
+
     @GetMapping("/employee/{id}")
     public EmployeeResponse getEmployeeById(@PathVariable String id) {
         int _id = 0;
@@ -24,8 +26,8 @@ public class EmployeeController {
 
 //      Todo: Workshop
 //        int number = this.random.nextInt(10);
-        Optional<EmployeeEntity> result = employeeRepository.findById(_id);
-        return this.responseMapping(result);
+//        Optional<EmployeeEntity> result = employeeRepository.findById(_id);
+        return this.employeeService.getUser(_id);
     }
 
     @GetMapping("/employee")
@@ -36,8 +38,8 @@ public class EmployeeController {
         } catch (Exception e) {
             System.out.println("Invalid type of id");
         }
-        Optional<EmployeeEntity> result = employeeRepository.findById(_id);
-        return this.responseMapping(result);
+//        Optional<EmployeeEntity> result = employeeRepository.findById(_id);
+        return this.employeeService.getUser(_id);
     }
 
     @PostMapping("/employee")
@@ -49,12 +51,5 @@ public class EmployeeController {
         return new EmployeeResponse(result.getId(), result.getFirstName(), result.getLastName());
     }
 
-    private EmployeeResponse responseMapping(Optional<EmployeeEntity> ent){
-        if(ent.isPresent()){
-            EmployeeEntity emp = ent.get();
-            return new EmployeeResponse(emp.getId(), emp.getFirstName(), emp.getLastName());
-        }
-//       ? Not found!!
-        return new EmployeeResponse();
-    }
+
 }

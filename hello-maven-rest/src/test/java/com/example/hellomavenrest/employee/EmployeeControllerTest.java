@@ -39,10 +39,10 @@ class EmployeeControllerTest {
     @Test
     public void callAPIWithPathVariableAndDatabase(){
 //      ? Mocking
-//        when(random.nextInt(anyInt())).thenReturn(5);
+        when(random.nextInt(anyInt())).thenReturn(5);
 
 //       ? Create Data
-        employeeRepository.save(new EmployeeEntity(123, "Taitana5", "Yumee"));
+        employeeRepository.save(new EmployeeEntity(123, "Taitana", "Yumee"));
 
 //       ? Call API
         EmployeeResponse response = restTemplate.getForObject("/employee/123", EmployeeResponse.class);

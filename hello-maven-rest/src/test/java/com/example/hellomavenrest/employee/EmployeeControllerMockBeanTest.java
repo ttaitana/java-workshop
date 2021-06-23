@@ -25,7 +25,7 @@ class EmployeeControllerMockBeanTest {
     @Test
     public void callAPIWithPathVariableWithoutDatabase(){
 //      ? Mocking
-//        when(random.nextInt(anyInt())).thenReturn(5);
+        when(random.nextInt(anyInt())).thenReturn(5);
         EmployeeEntity mock = new EmployeeEntity(123, "Taitana", "Yumee");
         when(employeeRepository.findById(123)).thenReturn(Optional.of(mock));
 
@@ -36,9 +36,9 @@ class EmployeeControllerMockBeanTest {
         EmployeeResponse response = restTemplate.getForObject("/employee/123", EmployeeResponse.class);
 
 //       ? Testing Zone
-        EmployeeResponse expect = new EmployeeResponse(123, "Taitana", "Yumee");
+        EmployeeResponse expect = new EmployeeResponse(123, "Taitana5", "Yumee");
         assertEquals(123, response.getId());
-        assertEquals("Taitana", response.getFirstName());
+        assertEquals("Taitana5", response.getFirstName());
         assertEquals("Yumee", response.getLastName());
         assertEquals(expect, response);
     }
