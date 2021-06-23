@@ -9,7 +9,7 @@ import java.util.Random;
 @Service
 public class EmployeeService {
     @Autowired
-    private Random random = new Random();
+    private Random random;
 
     public void setRandom(Random random) {
         this.random = random;
@@ -28,8 +28,8 @@ public class EmployeeService {
     }
 
     private EmployeeResponse responseMapping(Optional<EmployeeEntity> ent){
-        int number = this.random.nextInt(10);
         if(ent.isPresent()){
+            int number = this.random.nextInt(10);
             EmployeeEntity emp = ent.get();
             return new EmployeeResponse(emp.getId(), emp.getFirstName() + number, emp.getLastName());
         }
