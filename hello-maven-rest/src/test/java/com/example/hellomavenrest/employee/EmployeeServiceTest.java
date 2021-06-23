@@ -1,5 +1,6 @@
 package com.example.hellomavenrest.employee;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.Mock;
@@ -19,9 +20,13 @@ class EmployeeServiceTest {
     @Mock
     private EmployeeRepository employeeRepository;
 
+    @BeforeEach
+    public void setupMock() {
+        when(random.nextInt(10)).thenReturn(10);
+    }
+
     @Test
     public void foundEmployee(){
-        when(random.nextInt(10)).thenReturn(10);
 
         EmployeeEntity mock = new EmployeeEntity(1, "Service name", "Service lname");
         when(employeeRepository.findById(1)).thenReturn(Optional.of(mock));
@@ -39,9 +44,10 @@ class EmployeeServiceTest {
     public void foundEmployeeNotFound(){
         EmployeeService service = new EmployeeService();
         service.setEmployeeRepository(employeeRepository);
-        EmployeeResponse result = service.getUser(100);
-        assertEquals(0, result.getId());
-        assertEquals(null, result.getFirstName());
-        assertEquals(null, result.getLastName());
+        service.setRandom(random);
+
+        Exception exception = assertThrows(EmployeeNotFoundException.class, () -> service.getUser(100));
+
+        assertEquals("Employee id 100 not found", exception.getMessage());
     }
 }
