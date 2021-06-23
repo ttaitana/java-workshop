@@ -3,8 +3,8 @@ package com.example.hellomavenrest.employee;
 import java.util.Objects;
 
 public class EmployeeResponse {
-    private String fname;
-    private String lname;
+    private String firstName;
+    private String lastName;
     private int id;
 
     @Override
@@ -13,38 +13,38 @@ public class EmployeeResponse {
         if (!(o instanceof EmployeeResponse)) return false;
         EmployeeResponse that = (EmployeeResponse) o;
         return getId() == that.getId() &&
-                Objects.equals(getFname(), that.getFname()) &&
-                Objects.equals(getLname(), that.getLname());
+                Objects.equals(getFirstName(), that.getFirstName()) &&
+                Objects.equals(getLastName(), that.getLastName());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(getFname(), getLname(), getId());
+        return Objects.hash(getFirstName(), getLastName(), getId());
     }
 
     public EmployeeResponse() {
     }
 
-    public EmployeeResponse(int id, String fname, String lname) {
-        this.fname = fname;
-        this.lname = lname;
+    public EmployeeResponse(int id, String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
         this.id = id;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getFname() {
-        return fname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getLname() {
-        return lname;
+    public String getLastName() {
+        return lastName;
     }
 
     public void setId(int id) {

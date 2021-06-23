@@ -30,8 +30,8 @@ class EmployeeControllerTest {
     public void callAPIWithQueryVariable(){
         EmployeeResponse response = restTemplate.getForObject("/employee?id=12", EmployeeResponse.class);
         assertEquals(12, response.getId());
-        assertEquals("Taitana", response.getFname());
-        assertEquals("Yumee", response.getLname());
+        assertEquals("Taitana", response.getFirstName());
+        assertEquals("Yumee", response.getLastName());
     }
 
     @Test
@@ -42,8 +42,8 @@ class EmployeeControllerTest {
         EmployeeResponse response = restTemplate.getForObject("/employee/123", EmployeeResponse.class);
         EmployeeResponse expect = new EmployeeResponse(123, "Taitana5", "Yumee");
         assertEquals(123, response.getId());
-        assertEquals("Taitana5", response.getFname());
-        assertEquals("Yumee", response.getLname());
+        assertEquals("Taitana5", response.getFirstName());
+        assertEquals("Yumee", response.getLastName());
         assertEquals(expect, response);
     }
 

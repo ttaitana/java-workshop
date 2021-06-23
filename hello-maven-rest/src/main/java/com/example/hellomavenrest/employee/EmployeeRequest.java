@@ -3,44 +3,44 @@ package com.example.hellomavenrest.employee;
 import java.util.Objects;
 
 public class EmployeeRequest {
-    private String fname;
-    private String lname;
+    private String firstName;
+    private String lastName;
 
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
 		if (!(o instanceof EmployeeRequest)) return false;
 		EmployeeRequest that = (EmployeeRequest) o;
-		return Objects.equals(getFname(), that.getFname()) &&
-				Objects.equals(getLname(), that.getLname());
+		return Objects.equals(getFirstName(), that.getFirstName()) &&
+				Objects.equals(getLastName(), that.getLastName());
 	}
 
 	@Override
 	public int hashCode() {
-		return Objects.hash(getFname(), getLname());
+		return Objects.hash(getFirstName(), getLastName());
 	}
 
 	public EmployeeRequest() {
     }
 
-    public EmployeeRequest(String fname, String lname) {
-        this.fname = fname;
-        this.lname = lname;
+    public EmployeeRequest(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public void setFname(String fname) {
-        this.fname = fname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getFname() {
-        return fname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setLname(String lname) {
-        this.lname = lname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
-    public String getLname() {
-        return lname;
+    public String getLastName() {
+        return lastName;
     }
 }

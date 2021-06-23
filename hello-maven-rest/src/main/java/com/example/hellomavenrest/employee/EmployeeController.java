@@ -3,8 +3,6 @@ package com.example.hellomavenrest.employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Random;
-
 @RestController
 public class EmployeeController {
     @Autowired
@@ -39,6 +37,6 @@ public class EmployeeController {
     public EmployeeResponse createEmployee(@RequestBody EmployeeRequest req) {
         int id = this.random.nextInt(10);
 
-        return new EmployeeResponse(id, req.getFname(), req.getLname());
+        return new EmployeeResponse(id, req.getFirstName(), req.getLastName());
     }
 }
