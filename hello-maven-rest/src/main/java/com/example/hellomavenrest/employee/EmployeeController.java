@@ -3,6 +3,8 @@ package com.example.hellomavenrest.employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Optional;
+
 @RestController
 public class EmployeeController {
     @Autowired
@@ -22,7 +24,7 @@ public class EmployeeController {
 
 //      Todo: Workshop
 //        int number = this.random.nextInt(10);
-        EmployeeEntity result = employeeRepository.getById(_id);
+        Optional<EmployeeEntity> result = employeeRepository.findById(_id);
         return this.responseMapping(result);
     }
 
@@ -34,7 +36,7 @@ public class EmployeeController {
         } catch (Exception e) {
             System.out.println("Invalid type of id");
         }
-        EmployeeEntity result = employeeRepository.getById(_id);
+        Optional<EmployeeEntity> result = employeeRepository.findById(_id);
         return this.responseMapping(result);
     }
 
@@ -44,10 +46,15 @@ public class EmployeeController {
 
         EmployeeEntity employee =  new EmployeeEntity(req.getFirstName(), req.getLastName());
         EmployeeEntity result =  employeeRepository.save(employee);
-        return this.responseMapping(result);
+        return new EmployeeResponse(result.getId(), result.getFirstName(), result.getLastName());
     }
 
-    private EmployeeResponse responseMapping(EmployeeEntity ent){
-        return new EmployeeResponse(ent.getId(), ent.getFirstName(), ent.getLastName());
+    private EmployeeResponse responseMapping(Optional<EmployeeEntity> ent){
+        if(ent.isPresent()){
+            EmployeeEntity emp = ent.get();
+            return new EmployeeResponse(emp.getId(), emp.getFirstName(), emp.getLastName());
+        }
+//       ? Not found!!
+        return new EmployeeResponse();
     }
 }

@@ -13,7 +13,7 @@ class EmployeeRepositoryTest {
 
     @Test
     public void foundWithId1(){
-        EmployeeEntity data = new EmployeeEntity("ttaitana", "yumee");
+        EmployeeEntity data = new EmployeeEntity(1, "ttaitana", "yumee");
         repository.save(data);
 
         EmployeeEntity employee1 = repository.getById(1);

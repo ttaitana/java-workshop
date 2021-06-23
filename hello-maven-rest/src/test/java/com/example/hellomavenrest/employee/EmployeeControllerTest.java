@@ -18,6 +18,8 @@ class EmployeeControllerTest {
 
     @Autowired TestRestTemplate restTemplate;
 
+    @Autowired EmployeeRepository employeeRepository;
+
 //    @Test
 //    public void callAPIWithPathVariable(@Autowired TestRestTemplate restTemplate){
 //        EmployeeResponse response = restTemplate.getForObject("/employee/123", EmployeeResponse.class);
@@ -35,11 +37,17 @@ class EmployeeControllerTest {
     }
 
     @Test
-    public void callAPIWithPathVariableCompareWithObject(){
+    public void callAPIWithPathVariableAndDataBase(){
 //      ? Mocking
-        when(random.nextInt(anyInt())).thenReturn(5);
+//        when(random.nextInt(anyInt())).thenReturn(5);
 
+//       ? Create Data
+        employeeRepository.save(new EmployeeEntity(123, "Taitana5", "Yumee"));
+
+//       ? Call API
         EmployeeResponse response = restTemplate.getForObject("/employee/123", EmployeeResponse.class);
+
+//       ? Testing Zone
         EmployeeResponse expect = new EmployeeResponse(123, "Taitana5", "Yumee");
         assertEquals(123, response.getId());
         assertEquals("Taitana5", response.getFirstName());

@@ -5,10 +5,16 @@ import javax.persistence.*;
 @Entity
 public class EmployeeEntity {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
     public EmployeeEntity(){}
+
+    public EmployeeEntity(int id, String firstName, String lastName) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
 
     public EmployeeEntity(String firstName, String lastName) {
         this.firstName = firstName;
