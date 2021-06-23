@@ -37,7 +37,7 @@ class EmployeeControllerTest {
     }
 
     @Test
-    public void callAPIWithPathVariableAndDataBase(){
+    public void callAPIWithPathVariableAndDatabase(){
 //      ? Mocking
 //        when(random.nextInt(anyInt())).thenReturn(5);
 
