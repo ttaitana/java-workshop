@@ -12,7 +12,10 @@ class EmployeeRepositoryTest {
     private EmployeeRepository repository;
 
     @Test
-    public void fouldWithId1(){
+    public void foundWithId1(){
+        EmployeeEntity data = new EmployeeEntity("ttaitana", "yumee");
+        repository.save(data);
+
         EmployeeEntity employee1 = repository.getById(1);
         assertEquals(1, employee1.getId());
         assertEquals("ttaitana", employee1.getFirstName());
