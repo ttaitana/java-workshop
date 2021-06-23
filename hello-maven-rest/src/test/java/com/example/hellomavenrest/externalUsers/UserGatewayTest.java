@@ -31,4 +31,10 @@ class UserGatewayTest {
         List<ExternalUserModel> users = userGateway.getEvenIdUsers();
         assertEquals(5, users.size());
     }
+
+    @Test
+    public void getUsersWhereIdIsEvenCheckEveryUsers(){
+        List<ExternalUserModel> users = userGateway.getEvenIdUsers();
+        users.forEach(user -> assertEquals(true, user.getId() % 2 == 0));
+    }
 }
