@@ -9,7 +9,15 @@ import java.util.Random;
 @Service
 public class EmployeeService {
     @Autowired
-    private Random random;
+    private Random random = new Random();
+
+    public void setRandom(Random random) {
+        this.random = random;
+    }
+
+    public void setEmployeeRepository(EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
 
     @Autowired
     private EmployeeRepository employeeRepository;
