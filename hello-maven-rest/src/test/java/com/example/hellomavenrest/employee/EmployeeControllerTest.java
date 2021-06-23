@@ -28,13 +28,13 @@ class EmployeeControllerTest {
 //        assertEquals("Yumee", response.getLname());
 //    }
 
-    @Test
-    public void callAPIWithQueryVariable(){
-        EmployeeResponse response = restTemplate.getForObject("/employee?id=12", EmployeeResponse.class);
-        assertEquals(12, response.getId());
-        assertEquals("Taitana", response.getFirstName());
-        assertEquals("Yumee", response.getLastName());
-    }
+//    @Test
+//    public void callAPIWithQueryVariable(){
+//        EmployeeResponse response = restTemplate.getForObject("/employee?id=12", EmployeeResponse.class);
+//        assertEquals(12, response.getId());
+//        assertEquals("Taitana", response.getFirstName());
+//        assertEquals("Yumee", response.getLastName());
+//    }
 
     @Test
     public void callAPIWithPathVariableAndDatabase(){
@@ -55,12 +55,12 @@ class EmployeeControllerTest {
         assertEquals(expect, response);
     }
 
-    @Test
-    public void callCreateEmployeeApi(){
-        when(random.nextInt(anyInt())).thenReturn(1);
-        EmployeeResponse expect = new EmployeeResponse(1, "Taitana", "Yumee");
-        EmployeeRequest req = new EmployeeRequest("Taitana", "Yumee");
-        EmployeeResponse response = restTemplate.postForObject("/employee", req,  EmployeeResponse.class);
-        assertEquals(expect, response);
-    }
+//    @Test
+//    public void callCreateEmployeeApi(){
+//        when(random.nextInt(anyInt())).thenReturn(1);
+//        EmployeeResponse expect = new EmployeeResponse(1, "Taitana", "Yumee");
+//        EmployeeRequest req = new EmployeeRequest("Taitana", "Yumee");
+//        EmployeeResponse response = restTemplate.postForObject("/employee", req,  EmployeeResponse.class);
+//        assertEquals(expect, response);
+//    }
 }
