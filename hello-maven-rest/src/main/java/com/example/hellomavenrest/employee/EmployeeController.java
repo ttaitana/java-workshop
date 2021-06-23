@@ -8,6 +8,9 @@ public class EmployeeController {
     @Autowired
     private NumberRandom random;
 
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
     @GetMapping("/employee/{id}")
     public EmployeeResponse getEmployeeById(@PathVariable String id) {
         int _id = 0;
@@ -18,8 +21,9 @@ public class EmployeeController {
         }
 
 //      Todo: Workshop
-        int number = this.random.nextInt(10);
-        return new EmployeeResponse(_id, "Taitana" + number, "Yumee");
+//        int number = this.random.nextInt(10);
+        EmployeeEntity result = employeeRepository.getById(_id);
+        return this.responseMapping(result);
     }
 
     @GetMapping("/employee")
@@ -30,13 +34,20 @@ public class EmployeeController {
         } catch (Exception e) {
             System.out.println("Invalid type of id");
         }
-        return new EmployeeResponse(_id, "Taitana", "Yumee");
+        EmployeeEntity result = employeeRepository.getById(_id);
+        return this.responseMapping(result);
     }
 
     @PostMapping("/employee")
     public EmployeeResponse createEmployee(@RequestBody EmployeeRequest req) {
         int id = this.random.nextInt(10);
 
-        return new EmployeeResponse(id, req.getFirstName(), req.getLastName());
+        EmployeeEntity employee =  new EmployeeEntity(req.getFirstName(), req.getLastName());
+        EmployeeEntity result =  employeeRepository.save(employee);
+        return this.responseMapping(result);
+    }
+
+    private EmployeeResponse responseMapping(EmployeeEntity ent){
+        return new EmployeeResponse(ent.getId(), ent.getFirstName(), ent.getLastName());
     }
 }

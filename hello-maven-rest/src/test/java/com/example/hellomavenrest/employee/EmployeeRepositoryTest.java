@@ -21,4 +21,15 @@ class EmployeeRepositoryTest {
         assertEquals("ttaitana", employee1.getFirstName());
         assertEquals("yumee", employee1.getLastName());
     }
+
+//    @Test
+//    public void foundWithId2(){
+//        EmployeeEntity data = new EmployeeEntity("ttaitana", "yumee");
+//        repository.save(data);
+//
+//        EmployeeEntity employee1 = repository.getById(1);
+//        assertEquals(1, employee1.getId());
+//        assertEquals("ttaitana", employee1.getFirstName());
+//        assertEquals("yumee", employee1.getLastName());
+//    }
 }
