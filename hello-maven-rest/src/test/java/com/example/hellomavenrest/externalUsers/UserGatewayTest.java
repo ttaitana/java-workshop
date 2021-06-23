@@ -25,4 +25,10 @@ class UserGatewayTest {
         assertEquals(1, user.getId());
         assertEquals("Leanne Graham", user.getName());
     }
+
+    @Test
+    public void getUsersWhereIdIsEven(){
+        List<ExternalUserModel> users = userGateway.getEvenIdUsers();
+        assertEquals(5, users.size());
+    }
 }
